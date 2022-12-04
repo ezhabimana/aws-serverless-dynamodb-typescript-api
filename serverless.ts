@@ -30,7 +30,7 @@ const serverlessConfiguration: AWS = {
             "dynamodb:UpdateItem",
             "dynamodb:DeleteItem",
           ],
-          Resource: "arn:aws:dynamodb:us-west-2:*:table/TodosTable",
+          Resource: "arn:aws:dynamodb:us-east-1:*:table/TodosTable",
         }],
       },
 
@@ -52,7 +52,7 @@ const serverlessConfiguration: AWS = {
     },
     dynamodb:{
       start:{
-        port: 5000,
+        port: 3000,
         inMemory: true,
         migrate: true,
       },
@@ -73,11 +73,7 @@ const serverlessConfiguration: AWS = {
             AttributeName: "todosId",
             KeyType: "HASH"
           }],
-          ProvisionedThroughput: {
-            ReadCapacityUnits: 1,
-            WriteCapacityUnits: 1
-          },
-          
+          BillingMode: "PAY_PER_REQUEST"
         }
       }
     }
